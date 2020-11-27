@@ -8,10 +8,10 @@ let id = 1;
 
 router
   .route("/")
-  .get(() => {
+  .get((req, res) => {
     return res.json(pokemons);
   })
-  .post(() => {
+  .post((req, res) => {
     pokemons.push({
       name: req.base.name,
       type: ++type
@@ -25,16 +25,14 @@ router
   
   
   .put((req, res) => {
-    const pokemons = users.find(val => val.id === Number(req.params.id));
+    const pokemons = pokemons.find(val => val.id === Number(req.params.id));
     pokemons.name = req.body.name;
-    return res.json({ message: "Updated" });
+    return res.json({ message: "Pokemon Updated" });
   })
   .delete((req, res) => {
     const pokemons = pokemons.findIndex(val => val.id === Number(req.params.id));
     pokemons.splice(pokeIndex, 1);
-    return res.json({ message: "Deleted" });
-  
-    post((req, res) => {
+    return res.json({ message: "Pokemon Deleted" });
+  })
 
-    },);
-module.exports = router });
+module.exports = router
