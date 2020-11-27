@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const arg = process.argv
-const pokeRoutes = require("/routes/pokemon.js");
+const pokeRoutes = require("./routes/pokemon.js");
 
 app.use('/pokemons', pokeRoutes);
 
