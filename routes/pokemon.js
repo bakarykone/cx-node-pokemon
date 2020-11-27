@@ -6,7 +6,7 @@ let id = 1;
 router
   .route("/")
   .get((req, res) => { 
-    console.log(pokemons)
+    
     return res.json(pokemons);
   })
   .post((req, res) => {
