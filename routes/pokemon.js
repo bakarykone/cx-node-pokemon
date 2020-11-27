@@ -1,28 +1,24 @@
 const express = require("express");
-const { type } = require("os");
 const router = express.Router();
-
-const pokemons = [];
+const pokemons = require("./../pokedex.json")
 let id = 1;
-
 
 router
   .route("/")
-  .get((req, res) => {
+  .get((req, res) => { 
+    console.log(pokemons)
     return res.json(pokemons);
   })
   .post((req, res) => {
     pokemons.push({
-      name: req.base.name,
-      type: ++type
+      name: req.name,
+      type: req.type
     });
     return res.json({ message: "Your pokemon" });
   });
 
 router
   .route("/:id")
-  
-  
   
   .put((req, res) => {
     const pokemons = pokemons.find(val => val.id === Number(req.params.id));
@@ -34,5 +30,5 @@ router
     pokemons.splice(pokeIndex, 1);
     return res.json({ message: "Pokemon Deleted" });
   })
-
+ 
 module.exports = router
