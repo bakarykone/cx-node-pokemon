@@ -1,9 +1,18 @@
 const express = require("express");
-const server = express();
+const app = express();
 const arg = process.argv
+const pokeRoutes = require("/routes/pokemon.js");
+
+app.use('/pokemons', pokeRoutes);
+
+app.get("/", (req,res) => {
+  return res.json("Start with /pokemons");
+});
 
 
 
-server.listen(4242,function() {
+
+
+app.listen(4242,function() {
 console.log('Server is listening on http://localhost:' + arg[2] );
 });
